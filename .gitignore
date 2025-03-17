@@ -1,0 +1,9 @@
+# Don't track these folders and images
+.vscode
+dl/
+token.txt
+
+# Don't track PyInstaller file output
+dist/
+build/
+*.spec
