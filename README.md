@@ -20,15 +20,16 @@ A tool that can be used to download all of your favorite radio dramas from MissE
         * Run `missevan_downloader.exe` inside the `dist` folder and follow the prompts. You may run this executable from anywhere on your machine.
 
 ## How to use (on Windows)
-> **Optional but recommended step:**
+> [!TIP]
+> **Optional but recommended step:**  
+> Some radio dramas are paid and require you to own them in order to download.  
+> * If you have a registered account on MissEvan/猫耳FM:
+>    * Create a `token.txt` file in the same folder as `missevan_downloader.py` or the bundled application.
+>  * Locate and copy your token from your browser:  
+>  `Developer Tools > Storage > Cookies > https://www.missevan.com > token > somelongvalue`
+>  * Paste your token value into `token.txt` and save.
 
-Some radio dramas are paid and require you to own them in order to download.
-  * If you have a registered account on MissEvan/猫耳FM:
-    * Create a `token.txt` file in the same folder as `missevan_downloader.py` or the bundled application.
-  * Locate and copy your token from your browser:  
-  `Developer Tools > Storage > Cookies > https://www.missevan.com > token > somelongvalue`
-  * Paste your token value into `token.txt` and save.
-
+> [!IMPORTANT]
 > **DO NOT SHARE YOUR TOKEN WITH ANYONE ELSE**
 
 1. Run the script directly: `python missevan_downloader.py` or the bundled executable.
