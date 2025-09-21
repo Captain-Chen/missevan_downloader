@@ -31,15 +31,26 @@ def sanitize_filename(filename):
     """Replaces any invalid characters"""
     return re.sub(invalid_characters, "_", filename) 
 
-async def fetch_token():
-    token_path = os.path.join(app_path, 'token.txt')
-    if not os.path.exists(token_path):
-        return None
-    
-    async with aiofiles.open(token_path, 'r') as f:
-        token_value = await f.read()
+async def get_default_headers():
+    """Return headers with optional token cookie"""
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/114.0 Safari/537.36"
+        ),
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "Referer": "https://www.missevan.com/",
+    }
 
-    return {"Cookie": f"token={token_value}"}
+    # append cookie
+    token_path = os.path.join(app_path, 'token.txt')
+    if os.path.exists(token_path):
+        async with aiofiles.open(token_path, 'r') as f:
+            token_value = (await f.read()).strip()
+        headers["Cookie"] = f"token={token_value}"
+
+    return headers
 
 async def download_audio(id, session, **kwargs):
     url = f"{base_url}/sound/getsound?soundid={id}"
@@ -84,7 +95,7 @@ async def main():
     url = input("Please paste the full url here: ")
     if not validators.url(url):
         return
-    headers = await fetch_token()
+    headers = await get_default_headers()
     async with ClientSession(headers=headers) as session:
         if not is_drama_link(url):
             audio_id = url.split('=')[-1]

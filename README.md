@@ -26,7 +26,7 @@ A tool that can be used to download all of your favorite radio dramas from MissE
 > * If you have a registered account on MissEvan/猫耳FM:
 >    * Create a `token.txt` file in the same folder as `missevan_downloader.py` or the bundled application.
 >  * Locate and copy your token from your browser:  
->  `Developer Tools > Storage > Cookies > https://www.missevan.com > token > somelongvalue`
+>  `Developer Tools > Application > Storage > Cookies > https://www.missevan.com > token > somelongvalue`
 >  * Paste your token value into `token.txt` and save.
 
 > [!IMPORTANT]
